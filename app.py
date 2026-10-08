@@ -167,7 +167,7 @@ class ShopAdminApp:
         self.login_button.pack(fill="x")
 
         backend = "SQLite demo database" if database.DB_BACKEND != "oracle" else "Oracle database"
-        ttk.Label(card, text=f"Connected to: {backend}", style="CardMuted.TLabel").pack(pady=(16, 0))
+        ttk.Label(card, text=f"Database: {backend}", style="CardMuted.TLabel").pack(pady=(16, 0))
 
         self.root.bind("<Return>", lambda e: self.handle_login())
         self.name_entry.focus_set()
@@ -729,7 +729,17 @@ class ShopAdminApp:
         self.root.destroy()
 
 
+def enable_high_dpi():
+    """Render crisply on high-DPI Windows displays instead of a blurry bitmap-scaled window."""
+    try:
+        import ctypes
+        ctypes.windll.shcore.SetProcessDpiAwareness(1)
+    except Exception:
+        pass  # not Windows, or not supported
+
+
 def main():
+    enable_high_dpi()
     root = tk.Tk()
     ShopAdminApp(root)
     root.mainloop()
