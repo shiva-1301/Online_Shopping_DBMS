@@ -1,0 +1,5 @@
+Pillow>=10.0
+matplotlib>=3.7
+# Only needed for the Oracle backend (DB_BACKEND=oracle).
+# python-oracledb is the maintained successor of cx_Oracle and needs no Instant Client.
+oracledb>=2.0
